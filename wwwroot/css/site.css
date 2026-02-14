@@ -1,0 +1,324 @@
+/* ============================================
+   Movie theater theme – CSS variables
+   ============================================ */
+:root {
+  --cinema-bg: #0c0c0e;
+  --cinema-bg-elevated: #16161a;
+  --cinema-curtain: #6b1515;
+  --cinema-curtain-dark: #4a0f0f;
+  --cinema-gold: #c9a227;
+  --cinema-gold-dim: #9a7b1a;
+  --cinema-gold-bright: #e6c04a;
+  --cinema-text: #e8e6e3;
+  --cinema-text-muted: #9a9690;
+  --cinema-border: rgba(201, 162, 39, 0.25);
+  --cinema-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   Base
+   ============================================ */
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* ============================================
+   Movie theater theme (body)
+   ============================================ */
+body.theme-cinema {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 0;
+  background: var(--cinema-bg);
+  background-image: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(107, 21, 21, 0.15), transparent 50%),
+    linear-gradient(180deg, var(--cinema-bg) 0%, #0a0a0c 100%);
+  color: var(--cinema-text);
+  font-family: "Source Serif 4", Georgia, serif;
+}
+
+/* Grow the main content area so the footer sticks to the bottom of the viewport */
+body.theme-cinema > .container-cinema {
+  flex: 1;
+}
+
+.theme-cinema h1,
+.theme-cinema .display-4,
+.theme-cinema h2,
+.theme-cinema h3 {
+  font-family: "Cinzel", serif;
+  color: var(--cinema-gold-bright);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.theme-cinema .display-4 {
+  font-size: 2.25rem;
+  border-bottom: 2px solid var(--cinema-border);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .theme-cinema .display-4 {
+    font-size: 2.75rem;
+  }
+}
+
+.theme-cinema .lead,
+.theme-cinema p {
+  color: var(--cinema-text);
+}
+
+.theme-cinema .text-muted {
+  color: var(--cinema-text-muted) !important;
+}
+
+/* ============================================
+   Navbar – theater curtain
+   ============================================ */
+.navbar-cinema {
+  background: linear-gradient(180deg, var(--cinema-curtain) 0%, var(--cinema-curtain-dark) 100%) !important;
+  box-shadow: var(--cinema-shadow), inset 0 1px 0 rgba(201, 162, 39, 0.2);
+  border-bottom: 2px solid var(--cinema-gold-dim);
+}
+
+.navbar-brand-cinema {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  color: var(--cinema-gold-bright) !important;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+}
+
+.navbar-brand-cinema:hover {
+  color: #fff !important;
+}
+
+.nav-link-cinema {
+  color: rgba(232, 230, 227, 0.9) !important;
+  font-weight: 500;
+}
+
+.nav-link-cinema:hover,
+.nav-link-cinema:focus {
+  color: var(--cinema-gold-bright) !important;
+}
+
+.navbar-toggler-cinema {
+  border-color: var(--cinema-gold-dim);
+}
+
+.navbar-toggler-cinema .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c9a227' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================
+   Main content – stage / screen area
+   ============================================ */
+.container-cinema {
+  max-width: 1200px;
+}
+
+.main-cinema {
+  background: var(--cinema-bg-elevated);
+  border: 1px solid var(--cinema-border);
+  border-radius: 8px;
+  box-shadow: var(--cinema-shadow), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+/* Home page image – subtle frame */
+.theme-cinema main .img-fluid.rounded {
+  border: 3px solid var(--cinema-border);
+  box-shadow: var(--cinema-shadow), 0 0 40px rgba(201, 162, 39, 0.1);
+}
+
+/* ============================================
+   Links
+   ============================================ */
+.theme-cinema a {
+  color: var(--cinema-gold-bright);
+}
+
+.theme-cinema a:hover {
+  color: var(--cinema-gold);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.theme-cinema .btn-primary {
+  background: linear-gradient(180deg, var(--cinema-gold) 0%, var(--cinema-gold-dim) 100%);
+  border: 1px solid var(--cinema-gold-dim);
+  color: #0c0c0e;
+  font-weight: 600;
+}
+
+.theme-cinema .btn-primary:hover {
+  background: linear-gradient(180deg, var(--cinema-gold-bright) 0%, var(--cinema-gold) 100%);
+  border-color: var(--cinema-gold);
+  color: #0c0c0e;
+}
+
+.theme-cinema .btn-outline-secondary {
+  border-color: var(--cinema-border);
+  color: var(--cinema-text-muted);
+}
+
+.theme-cinema .btn-outline-secondary:hover {
+  border-color: var(--cinema-gold-dim);
+  background: rgba(201, 162, 39, 0.1);
+  color: var(--cinema-gold-bright);
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.35);
+}
+
+/* ============================================
+   Forms – Add Movie
+   ============================================ */
+.theme-cinema .form-control,
+.theme-cinema .form-select {
+  background: var(--cinema-bg);
+  border: 1px solid var(--cinema-border);
+  color: var(--cinema-text);
+}
+
+.theme-cinema .form-control::placeholder {
+  color: var(--cinema-text-muted);
+}
+
+.theme-cinema .form-control:focus,
+.theme-cinema .form-select:focus {
+  background: var(--cinema-bg-elevated);
+  border-color: var(--cinema-gold-dim);
+  color: var(--cinema-text);
+}
+
+.theme-cinema .form-label {
+  color: var(--cinema-text-muted);
+  font-weight: 500;
+}
+
+.theme-cinema .form-check-input {
+  background-color: var(--cinema-bg);
+  border-color: var(--cinema-border);
+}
+
+.theme-cinema .form-check-input:checked {
+  background-color: var(--cinema-gold-dim);
+  border-color: var(--cinema-gold);
+}
+
+.theme-cinema .form-check-label {
+  color: var(--cinema-text);
+}
+
+.theme-cinema .text-danger {
+  color: #e07a7a !important;
+}
+
+/* ============================================
+   Table – View Collection
+   ============================================ */
+.table-cinema {
+  color: var(--cinema-text);
+  border-color: var(--cinema-border);
+}
+
+.table-cinema thead th {
+  background: var(--cinema-curtain-dark);
+  color: var(--cinema-gold-bright);
+  border-color: var(--cinema-border);
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+}
+
+.table-cinema tbody tr {
+  border-color: var(--cinema-border);
+}
+
+.table-cinema tbody tr:nth-of-type(odd) {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.table-cinema tbody tr:hover {
+  background: rgba(201, 162, 39, 0.06);
+}
+
+.table-cinema td {
+  border-color: var(--cinema-border);
+  padding: 0.75rem 1rem;
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+.theme-cinema .alert-success {
+  background: rgba(40, 80, 40, 0.4);
+  border: 1px solid rgba(201, 162, 39, 0.3);
+  color: var(--cinema-text);
+}
+
+.theme-cinema .alert .btn-close {
+  filter: invert(1);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer-cinema {
+  border-top: 2px solid var(--cinema-curtain-dark);
+  background: var(--cinema-bg);
+  color: var(--cinema-text-muted);
+  padding: 1.25rem 0;
+  margin-top: 2rem;
+}
+
+/* ============================================
+   Error page
+   ============================================ */
+.theme-cinema .text-danger {
+  color: #e07a7a !important;
+}
+
+.theme-cinema code {
+  background: var(--cinema-bg);
+  color: var(--cinema-gold-dim);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Form placeholders (Bootstrap overrides)
+   ============================================ */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+  color: var(--cinema-text-muted);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}

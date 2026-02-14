@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Get to Know Joel";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Get to Know Joel</h1>
+    <p class="lead mt-4">Joel performs regularly at Quick Wits Comedy and co-hosts the Baconsale podcast.</p>
+    <ul class="list-unstyled mt-4">
+        <li class="mb-3">
+            @* target="_blank" opens the link in a new tab. rel="noopener noreferrer" is for security when using target="_blank". *@
+            <a href="https://www.qwcomedy.com/" target="_blank" rel="noopener noreferrer">Quick Wits Comedy</a>
+            <span class="text-muted"> — where Joel performs regularly</span>
+        </li>
+        <li class="mb-3">
+            <a href="https://baconsale.com/" target="_blank" rel="noopener noreferrer">Baconsale</a>
+            <span class="text-muted"> — weekly podcast about films &amp; pop culture</span>
+        </li>
+    </ul>
+    @* The image is wrapped in an <a> tag so clicking the image goes to the Baconsale site. *@
+    <p class="mt-4">
+        <a href="https://baconsale.com/" target="_blank" rel="noopener noreferrer">
+            <img src="~/images/baconsale.jpg" alt="Baconsale" class="img-fluid rounded" style="max-width: 300px;" />
+        </a>
+    </p>
+</div>

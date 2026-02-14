@@ -1,0 +1,14 @@
+@* 
+   The block below is a Razor code block. It runs when the view is rendered.
+   ViewData["Title"] is used by _Layout.cshtml in the <title> tag and for the page heading if needed.
+*@
+@{
+    ViewData["Title"] = "Home";
+}
+
+@* This is the main content for the home page. The _Layout wraps this in the shared header, nav, and footer. *@
+<div class="text-center">
+    <h1 class="display-4">The Joel Hilton Film Collection</h1>
+    @* ~/ means "start from the web root" (wwwroot). So ~/images/... looks in wwwroot/images. *@
+    <img src="~/images/joel_hilton_headshot.jpg" alt="Joel Hilton" class="img-fluid rounded mt-3" style="max-width: 400px;" />
+</div>

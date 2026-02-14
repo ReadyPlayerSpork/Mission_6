@@ -1,0 +1,67 @@
+@* 
+   @model declares the type of data this view receives from the controller.
+   The controller passed a list of movies (IEnumerable<Movie>), so we can loop over Model and display each one.
+*@
+@model IEnumerable<Mission_6.Models.Movie>
+@{
+    ViewData["Title"] = "View Collection";
+}
+
+<h1 class="display-4">Movie Collection</h1>
+
+@* TempData is set in the controller after adding a movie. We show it here once, then it is removed. *@
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@* asp-action="Add" generates a link to the Add action (e.g. /Movies/Add). *@
+<p class="mt-3">
+    <a asp-action="Add" class="btn btn-primary">Add Movie</a>
+</p>
+
+@* Model is the list of movies from the controller. Model.Any() is true if there is at least one movie. *@
+@if (Model.Any())
+{
+    <div class="table-responsive mt-4">
+        <table class="table table-cinema">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Director</th>
+                    <th>Rating</th>
+                    <th>Edited</th>
+                    <th>Lent To</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* foreach loops over each movie in the list. "var movie" means each item is one Movie object. *@
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Category</td>
+                        <td>@movie.Title</td>
+                        <td>@movie.Year</td>
+                        <td>@movie.Director</td>
+                        <td>@movie.Rating</td>
+                        @* movie.Edited is a bool. We show "Yes" or "No" instead of True/False. *@
+                        <td>@(movie.Edited ? "Yes" : "No")</td>
+                        @* ?? "—" means: if LentTo is null, display a dash instead. Same for Notes. *@
+                        <td>@(movie.LentTo ?? "—")</td>
+                        <td>@(movie.Notes ?? "—")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="text-muted mt-4">No movies in the collection yet. <a asp-action="Add">Add one</a>.</p>
+}

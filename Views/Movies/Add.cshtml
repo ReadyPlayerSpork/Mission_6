@@ -1,0 +1,87 @@
+@* This view receives a single Movie from the controller. On GET it's empty; on POST after validation failure it has the user's input. *@
+@model Mission_6.Models.Movie
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<h1 class="display-4">Add Movie to Collection</h1>
+
+@* 
+   asp-action="Add" and method="post" mean: when the user submits, send the form data to the Add action as a POST request.
+   The tag helpers (asp-for, asp-validation-for) connect each input to the Model property and show validation errors.
+*@
+<form asp-action="Add" method="post" class="mt-4">
+    @* Shows a summary of validation errors at the top (e.g. "Category is required."). ModelOnly = errors not tied to a single field. *@
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            @* asp-for="Category" generates the correct name and id for model binding and uses the Display name from the model. *@
+            <label asp-for="Category" class="form-label"></label>
+            <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Year" class="form-label"></label>
+            <input asp-for="Year" class="form-control" type="number" min="1900" max="2100" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Director" class="form-label"></label>
+            <input asp-for="Director" class="form-control" />
+            <span asp-validation-for="Director" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Rating" class="form-label"></label>
+            @* A dropdown (select). The option value is what gets sent to the server and bound to Movie.Rating. *@
+            <select asp-for="Rating" class="form-select">
+                <option value="">-- Select Rating --</option>
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Edited" class="form-label"></label>
+            @* Checkbox: checked = true, unchecked = false. Optional field. *@
+            <div class="form-check mt-2">
+                <input asp-for="Edited" class="form-check-input" type="checkbox" />
+                <label asp-for="Edited" class="form-check-label">Yes (edited version)</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="LentTo" class="form-label"></label>
+            <input asp-for="LentTo" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Notes" class="form-label"></label>
+            <input asp-for="Notes" class="form-control" maxlength="25" />
+            <span asp-validation-for="Notes" class="text-danger"></span>
+            <small class="text-muted">Max 25 characters.</small>
+        </div>
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">View Collection</a>
+    </div>
+</form>
+
+@* 
+   The Scripts section is defined in _Layout.cshtml. We add the validation scripts here so they run on this page.
+   They enable client-side validation (e.g. required fields, max length) before the form is submitted.
+*@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
